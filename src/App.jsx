@@ -13,13 +13,22 @@ function App() {
     position: 'Quarterback',
     number: 47, 
     currentlyPlaying: true
-  }
+    }
+
+    const [playerData, setData] = useState({})
+
 
    useEffect(()=>{
     async function getData(){
       const res = await fetch('https://www.thesportsdb.com/api/v1/json/123/searchplayers.php?p=Danny_Welbeck')
       const stats = await res.json();
-      console.log(stats)
+
+      //Assign the First Player to a Variable 
+      const firstPlayer = stats.player[0]
+      console.log(firstPlayer)
+      //playerDate = firstPlater 
+      setData(firstPlayer)
+      
     }
     getData()
    }, []);
@@ -31,10 +40,10 @@ function App() {
 
     <div className='flex flex-row mx-auto'>
       <Card
-        name={dummyPlayer.name}
-        position={dummyPlayer.position}
-        number={dummyPlayer.number}
-        currentlyPlaying={dummyPlayer.currentlyPlaying}
+        name={playerData.strPlayer}
+        position={playerData.strPosition}
+        dob={playerData.dateBorn}
+        team={playerData.strTeam}
       />
     </div>
 
