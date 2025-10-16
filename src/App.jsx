@@ -20,7 +20,7 @@ function App() {
 
    useEffect(()=>{
     async function getData(){
-      const res = await fetch('https://www.thesportsdb.com/api/v1/json/123/searchplayers.php?p=Danny_Welbeck')
+      const res = await fetch('https://www.thesportsdb.com/api/v1/json/123/searchplayers.php?p=Tom_Brady')
       const stats = await res.json();
 
       //Assign the First Player to a Variable 
@@ -44,6 +44,7 @@ function App() {
         position={playerData.strPosition}
         dob={playerData.dateBorn}
         team={playerData.strTeam}
+        status={playerData.strStatus}
       />
     </div>
 
