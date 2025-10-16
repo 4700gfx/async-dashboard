@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import './index.css'
 import Header from './components/Header'
@@ -14,6 +14,15 @@ function App() {
     number: 47, 
     currentlyPlaying: true
   }
+
+   useEffect(()=>{
+    async function getData(){
+      const res = await fetch('https://www.thesportsdb.com/api/v1/json/123/searchplayers.php?p=Danny_Welbeck')
+      const stats = await res.json();
+      console.log(stats)
+    }
+    getData()
+   }, []);
 
 
   return (
